@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Global State Test",
+  "description": "Global State Test",
+  "version": "1.0",
+  "action": {
+    "default_title": "Click and State Change"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

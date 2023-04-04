@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "insight Stop viewing the main pop-up",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "https://gw.midasit.com/favicon.ico"
+    },
+    "content_scripts": [
+      {
+        "js": ["content.js"],
+        "matches": [
+          "https://st-*.midasweb.net",
+          "https://st2-*.midasweb.net",
+          "https://test02-*.midasweb.net",
+          "https://acc01-*.midasweb.net",
+          "https://acc02-*.midasweb.net",
+          "https://acc03-*.midasweb.net",
+          "https://acc04-*.midasweb.net",
+          "https://acc05-*.midasweb.net",
+          "https://acc06-*.midasweb.net",
+          "https://pdm-*.midasweb.net",
+          "https://qa-*.midasweb.net"
+        ]
+      }
+    ]
+  }
