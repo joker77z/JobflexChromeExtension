@@ -15,14 +15,21 @@ const api = async () => {
   }
 
   currentTabURL = await getTab();
+  currentTabURL = await currentTabURL.slice(0, currentTabURL.indexOf("/cus"));
+  console.log("currentTabURL", currentTabURL);
 
-  if (currentTabURL === "https://www.naver.com/")
-    chrome.storage.sync.get(["key"]).then((result) => {
-      console.log("Value currently is " + result.key);
+  if (currentTabURL === "https://www.naver.com")
+    chrome.storage.sync.get(["key"]).then(async (result) => {
+      console.log("Current Naver ON/OFF" + result.key);
       if (result.key) {
-        fetch("https://jsonplaceholder.typicode.com/todos/1")
-          .then((response) => response.json())
-          .then((json) => console.log(json));
+        const response = await fetch(
+          `${currentTabURL}/cus/member/extendPasswordExpirationDate`,
+          {
+            method: "POST",
+          }
+        );
+        const data = await response.json();
+        console.log(data);
       }
     });
 };

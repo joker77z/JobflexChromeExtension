@@ -2,13 +2,19 @@ let timer;
 timer = setInterval(checkStorage, 1000);
 
 async function checkStorage() {
-  chrome.storage.sync.get(["key"]).then((result) => {
-    console.log("Value currently is " + result.key);
+  chrome.storage.sync.get(["key"]).then(async (result) => {
+    console.log("Current Naver ON/OFF" + result.key);
     if (result.key) {
-      fetch("https://jsonplaceholder.typicode.com/todos/1")
-        .then((response) => response.json())
-        .then((json) => console.log(json))
-        .then(() => clearInterval(timer));
+      const origin = window.origin;
+      const response = await fetch(
+        `${origin}/cus/member/extendPasswordExpirationDate`,
+        {
+          method: "POST",
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      await clearInterval(timer);
     }
   });
 }
