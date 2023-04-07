@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "prototype3_standard",
+  "version": "1.0",
+  "description": "standard version",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com/cus/selectProduct",
+        "https://st-jobflexqaqc-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-smw1020-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobflex-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobflexqa04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-sec01-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-sec001-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-sec02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-kjm07-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-sec04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda05-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda06-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda07-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda08-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda09-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jobda10-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jf2-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-smw10203-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-simson-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jax20-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jax20isd-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-11325re-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jax10-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-jax20itv-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-sec03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-inair01-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jf-smw1020-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobflex01-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobflex02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobisd-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobitv-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-interview01-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobflex-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://test02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc01-all-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc02-integ-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc03-sr-game-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc04-sr-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc05-v2-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://acc06-custom-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://pdm-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-jobflex2-02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-deletetest-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://qa-jobflex03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://qa-jobflex04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://qa-jobda02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-inair01-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-inair02-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-inair-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-inairisd-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st2-inairitv-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://qa-inair04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://qa-inair03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct"
+
+      ],
+      "js": ["js/contentscript.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
