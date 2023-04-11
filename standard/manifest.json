@@ -10,9 +10,16 @@
   "background": {
     "service_worker": "js/background.js"
   },
+  "icons": {
+    "16": "icons/jobflex.png",
+    "32": "icons/jobflex.png",
+    "48": "icons/jobflex.png",
+    "128": "icons/jobflex.png"
+  },
   "content_scripts": [
     {
       "matches": [
+        "http://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com:3000/cus/selectProduct",
         "https://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com/cus/selectProduct",
         "https://st-jobflexqaqc-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
         "https://st-smw1020-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",

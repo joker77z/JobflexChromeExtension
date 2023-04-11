@@ -8,17 +8,37 @@ body {
 
 h1 {
     font-size: 16px;
-    padding-top: 13px;
 }
 
 section {
+    position: relative;
+    margin-top: 10px;
+    padding: 10px 0;
     box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+}
+
+section::before {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    content: '';
+    display: block;
+    background: red;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
 }
 
 .subtitle {
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 0;
+}
+
+.description {
+    font-size: 12px;
+    color: gray;
+    margin: 0;
 }
 
 .reddot {
@@ -26,14 +46,14 @@ section {
     font-size: 30px;
 }
 
-.extend-password-section {
+.control-section {
     display: flex;
     flex-flow: column;
     align-items: center;
     padding: 10px 30px;
 }
 
-.extend-password-section .toggleLabel {
+.control-section .toggleLabel {
     width: 100%;
     height: 24px;
     display: block;
@@ -49,7 +69,7 @@ section {
     font-size: 14px;
 }
 
-.extend-password-section .toggleIcon {
+.control-section .toggleIcon {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -77,11 +97,11 @@ section {
     transition: all 0.3s ease-in-out;
 }
 
-.extend-password-section input {
+.control-section input {
     display: none;
 }
 
-.extend-password-section .enableButton {
+.control-section .enableButton {
     width: 80px;
     height: 24px;
 
@@ -112,10 +132,10 @@ section {
 }
 
 .inner-header {
-    height:17vh;
+    height:10vh;
     width:100%;
     margin: 0;
-    padding: 0;
+    padding: 10px 0 0 0;
 }
 
 .flex { /*Flexbox for containers*/
@@ -124,6 +144,12 @@ section {
     align-items: center;
     text-align: center;
     margin-top: 4px;
+}
+
+.flex img {
+    width: 40px;
+    margin-left: 13px;
+    border-radius: 10px;
 }
 
 .waves {
