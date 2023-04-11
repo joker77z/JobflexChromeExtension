@@ -4,7 +4,7 @@
         if(msg.from === 'popup') {
             switch(msg.action) {
                 case 'enableAlwaysDontLoginHistory':
-                    dontLoginHistory(sendResponse);
+                    dontViewLoginHistory(sendResponse);
                 case 'enableAlwaysDontViewPopup':
                     dontViewPopup();
                 // 페이지 이미 도착 후 체크박스 on상태로 toggle하거나 Once 클릭 시
@@ -18,7 +18,7 @@
 
     chrome.storage.local.get(["enableAlwaysDontLoginHistory"]).then((result) => {
         if(result.enableAlwaysDontLoginHistory) {
-            dontLoginHistory();
+            dontViewLoginHistory();
         }
     })
 
@@ -34,7 +34,7 @@
         }
     })
 
-    function dontLoginHistory(sendResponse) {
+    function dontViewLoginHistory(sendResponse) {
         if(sendResponse) {
             const modalTitle = document.querySelector('.h1.face-lift-h1') || document.querySelector('.h1 ');
             if(modalTitle.textContent === '로그인 내역') {
