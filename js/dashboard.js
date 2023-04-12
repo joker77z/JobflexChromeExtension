@@ -15,7 +15,7 @@ chrome.storage.local.get(['alwaysDontViewPopup']).then((result) => {
 
 function dontViewPopup() {
   let timer = setInterval(() => {
-    if (document.querySelector('[data-popup]')) {
+    if (document.querySelector('#NoticepopUp')) {
       removeDOM();
       sendResponse({ success: 'success' });
       clearInterval(timer);
@@ -23,7 +23,7 @@ function dontViewPopup() {
   }, 500);
 
   function removeDOM() {
-    [...document.querySelectorAll('[data-popup]')].forEach((element) => {
+    [...document.querySelectorAll('#NoticepopUp')].forEach((element) => {
       element.remove();
     });
   }
