@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>Document</title>
-    <script src="js/popup.js"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/popup.css" />
+    <script src="js/popup.mjs" type="module"></script>
+    <script src="js/popup.mjs" type="module"></script>
 </head>
 <body>
     <div class="header">
@@ -35,8 +36,8 @@
         <h2 class="subtitle">로그인 팝업 끄기</h2>
         <h3 class="description">(제품선택 페이지 전용)</h3>
         <div class="control-section">
-            <input type="checkbox" id="alwaysEnableDontViewLoginHistory" class="alwaysEnableCheckbox">
-            <label for="alwaysEnableDontViewLoginHistory" class="toggleLabel">
+            <input type="checkbox" id="alwaysDontViewLoginHistoryToggle" class="always-checkbox">
+            <label for="alwaysDontViewLoginHistoryToggle" class="toggleLabel">
                 <span class="toggleText">Always</span>
                 <div class="toggleIcon"></div>
             </label>
@@ -47,8 +48,8 @@
         <h2 class="subtitle">공지 팝업 끄기</h2>
         <h3 class="description">(제품선택 페이지)</h3>
         <div class="control-section">
-            <input type="checkbox" id="alwaysEnableDontViewPopup" class="alwaysEnableCheckbox">
-            <label for="alwaysEnableDontViewPopup" class="toggleLabel">
+            <input type="checkbox" id="alwaysDontViewPopupToggle" class="always-checkbox">
+            <label for="alwaysDontViewPopupToggle" class="toggleLabel">
                 <span class="toggleText">Always</span>
                 <div class="toggleIcon"></div>
             </label>
@@ -59,12 +60,12 @@
         <h2 class="subtitle">비밀번호 연장하기</h2>
         <h3 class="description">(제품선택 페이지)</h3>
         <div class="control-section">
-            <input type="checkbox" id="alwaysEnableExtendPassword" class="alwaysEnableCheckbox">
-            <label for="alwaysEnableExtendPassword" class="toggleLabel">
+            <input type="checkbox" id="alwaysExtendPasswordToggle" class="always-checkbox">
+            <label for="alwaysExtendPasswordToggle" class="toggleLabel">
                 <span class="toggleText">Always</span>
                 <div class="toggleIcon"></div>
             </label>
-            <button type="button" id="enableExtendPasswordButton" class="enableButton">Once</button>
+            <button type="button" id="extendPasswordButton" class="once-button">Once</button>
         </div>
     </section>
 </body>

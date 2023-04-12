@@ -80,16 +80,16 @@ section::before {
     background: #f03d3d;
 }
 
-.alwaysEnableCheckbox:checked ~ .toggleLabel{
+.always-checkbox:checked ~ .toggleLabel{
     background: #f03d3d;
 }
 
-.alwaysEnableCheckbox:checked ~ .toggleLabel .toggleIcon{
+.always-checkbox:checked ~ .toggleLabel .toggleIcon{
     left: calc(100% - 20px);
     background: #fff;
 }
 
-.alwaysEnableCheckbox:checked ~ .toggleLabel .toggleText {
+.always-checkbox:checked ~ .toggleLabel .toggleText {
     color: #fff;
 }
 
@@ -101,7 +101,7 @@ section::before {
     display: none;
 }
 
-.control-section .enableButton {
+.control-section .once-button {
     width: 80px;
     height: 24px;
 
