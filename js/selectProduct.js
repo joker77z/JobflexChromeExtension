@@ -23,6 +23,8 @@ Object.entries(storageKeysToFunctionMap).forEach(([key, fn]) => {
   chrome.storage.local.get([key]).then((result) => {
     if (result[key]) {
       fn();
+    } else if (key === alwaysDontLoginHistory && !result[key]) {
+      document.cookie = 'WELCOME_PAGE=false';
     }
   });
 });
@@ -44,7 +46,7 @@ function dontViewPopup(sendResponse) {
   let timer = setInterval(() => {
     if (document.querySelector('[data-popup]')) {
       removeDOM();
-      sendResponse({ success: 'success' });
+      if (sendResponse) sendResponse({ success: 'success' });
       clearInterval(timer);
     }
   }, 500);
