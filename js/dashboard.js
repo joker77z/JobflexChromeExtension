@@ -13,11 +13,11 @@ chrome.storage.local.get(['alwaysDontViewPopup']).then((result) => {
   }
 });
 
-function dontViewPopup() {
+function dontViewPopup(sendResponse) {
   let timer = setInterval(() => {
     if (document.querySelector('#NoticepopUp')) {
       removeDOM();
-      sendResponse({ success: 'success' });
+      if (sendResponse) sendResponse({ success: 'success' });
       clearInterval(timer);
     }
   }, 500);
