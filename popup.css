@@ -1,190 +1,197 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
 body {
-    font-family: 'Lato', sans-serif;
-    width: 150px;
-    text-align: center;
+  font-family: 'Lato', sans-serif;
+  width: 150px;
+  text-align: center;
 }
 
 h1 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 section {
-    position: relative;
-    margin-top: 10px;
-    padding: 10px 0;
-    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 0;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
 }
 
 section::before {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    content: '';
-    display: block;
-    background: red;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  content: '';
+  display: block;
+  background: red;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
 }
 
-.subtitle {
-    font-size: 16px;
-    margin-top: 0px;
-    margin-bottom: 0;
+.section-title {
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0;
 }
 
-.description {
-    font-size: 12px;
-    color: gray;
-    margin: 0;
+.section-description {
+  font-size: 12px;
+  color: gray;
+  margin: 0;
 }
 
 .reddot {
-    color: red;
-    font-size: 30px;
+  color: red;
+  font-size: 30px;
 }
 
 .control-section {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    padding: 10px 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 10px 30px;
 }
 
-.control-section .toggleLabel {
-    width: 100%;
-    height: 24px;
-    display: block;
-    position: relative;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
-    cursor: pointer;
+.control-section .toggle-label {
+  width: 100%;
+  height: 24px;
+  display: block;
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
 }
 
-.toggleLabel .toggleText {
-    line-height: 24px;
-    font-size: 14px;
+.toggle-label .toggle-text {
+  line-height: 24px;
+  font-size: 14px;
 }
 
-.control-section .toggleIcon {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: 50%;
-    left: 2px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: #f03d3d;
+.control-section .toggle-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f03d3d;
 }
 
-.always-checkbox:checked ~ .toggleLabel{
-    background: #f03d3d;
+.always-checkbox:checked ~ .toggle-label {
+  background: #f03d3d;
 }
 
-.always-checkbox:checked ~ .toggleLabel .toggleIcon{
-    left: calc(100% - 20px);
-    background: #fff;
+.always-checkbox:checked ~ .toggle-label .toggle-icon {
+  left: calc(100% - 20px);
+  background: #fff;
 }
 
-.always-checkbox:checked ~ .toggleLabel .toggleText {
-    color: #fff;
+.always-checkbox:checked ~ .toggle-label .toggle-text {
+  color: #fff;
 }
 
-.toggleLabel, .toggleIcon, .toggleText {
-    transition: all 0.3s ease-in-out;
+.toggle-label,
+.toggle-icon,
+.toggle-text {
+  transition: all 0.3s ease-in-out;
 }
 
 .control-section input {
-    display: none;
+  display: none;
 }
 
 .control-section .once-button {
-    width: 80px;
-    height: 24px;
+  width: 80px;
+  height: 24px;
 
-    padding: 4px 0;
-    margin-top: 10px;
+  padding: 4px 0;
+  margin-top: 10px;
 
-    font-size: 14px;
-    border: none;
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
-    cursor: pointer;
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
 }
 
 /* ------------------------ wave ------------------------ */
 .header {
-    position:relative;
-    text-align:center;
-    background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-    color:white;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(
+    60deg,
+    rgba(84, 58, 183, 1) 0%,
+    rgba(0, 172, 193, 1) 100%
+  );
+  color: white;
 }
 .logo {
-    width:50px;
-    fill:white;
-    padding-right:15px;
-    display:inline-block;
-    vertical-align: middle;
+  width: 50px;
+  fill: white;
+  padding-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .inner-header {
-    height:10vh;
-    width:100%;
-    margin: 0;
-    padding: 10px 0 0 0;
+  height: 10vh;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 0 0;
 }
 
-.flex { /*Flexbox for containers*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 4px;
+.flex {
+  /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 4px;
 }
 
 .flex img {
-    width: 40px;
-    margin-left: 13px;
-    border-radius: 10px;
+  width: 40px;
+  margin-left: 13px;
+  border-radius: 10px;
 }
 
 .waves {
-    position: relative;
-    width: 100%;
-    height: 5vh;
-    margin-bottom: -7px; /*Fix for safari gap*/
-    min-height: 25px;
-    max-height: 50px;
+  position: relative;
+  width: 100%;
+  height: 5vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  min-height: 25px;
+  max-height: 50px;
 }
 /* Animation */
 .parallax > use {
-    animation: move-forever 25s cubic-bezier(0.55,.5,0.45,.5) infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 .parallax > use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
+  animation-delay: -2s;
+  animation-duration: 7s;
 }
 .parallax > use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
+  animation-delay: -3s;
+  animation-duration: 10s;
 }
 .parallax > use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
+  animation-delay: -4s;
+  animation-duration: 13s;
 }
 .parallax > use:nth-child(4) {
-    animation-delay: -5s;
-    animation-duration: 20s;
+  animation-delay: -5s;
+  animation-duration: 20s;
 }
 @keyframes move-forever {
-    0% {
-        transform: translate3d(-90px, 0, 0);
-    }
-    100% {
-        transform: translate3d(85px, 0, 0);
-    }
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
 }
