@@ -1,4 +1,4 @@
-import { $ } from './util';
+import { $ } from './util.mjs';
 
 window.addEventListener('DOMContentLoaded', () => {
   // Selector
