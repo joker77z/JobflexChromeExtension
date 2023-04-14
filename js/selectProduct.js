@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   if (msg.from === 'popup') {
     switch (msg.action) {
-      case 'alwaysDontLoginHistory':
+      case 'alwaysDontViewLoginHistory':
         dontViewLoginHistory(sendResponse);
       case 'alwaysDontViewPopup':
         dontViewPopup(sendResponse);
