@@ -37,7 +37,7 @@ function dontViewLoginHistory(sendResponse) {
     if (modalTitle.textContent === '로그인 내역') {
       modalTitle.closest('#modalFrm').remove();
     }
-    sendResponse({ success: 'success' });
+    sendResponse({ success: true });
   }
   document.cookie = 'WELCOME_PAGE=done';
 }
@@ -46,7 +46,7 @@ function dontViewPopup(sendResponse) {
   let timer = setInterval(() => {
     if (document.querySelector('[data-popup]')) {
       removeDOM();
-      if (sendResponse) sendResponse({ success: 'success' });
+      if (sendResponse) sendResponse({ success: true });
       clearInterval(timer);
     }
   }, 500);
@@ -77,7 +77,7 @@ async function extendPassword(sendResponse) {
 
   // 페이지 진입 전 Always ON이면 local storage데이터를 읽어서 사전에 API를 쏘기 때문에 모달이 안뜬다. 즉, sendResponse가 필요없다.
   if (sendResponse) {
-    sendResponse({ success: 'success' });
+    sendResponse({ success: true });
     document.querySelector('[data-type="changePassword"]').remove();
   }
 }

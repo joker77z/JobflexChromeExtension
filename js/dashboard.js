@@ -17,7 +17,7 @@ function dontViewPopup(sendResponse) {
   let timer = setInterval(() => {
     if (document.querySelector('#NoticepopUp')) {
       removeDOM();
-      if (sendResponse) sendResponse({ success: 'success' });
+      if (sendResponse) sendResponse({ success: true });
       clearInterval(timer);
     }
   }, 500);
