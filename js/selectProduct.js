@@ -23,7 +23,7 @@ Object.entries(storageKeysToFunctionMap).forEach(([key, fn]) => {
   chrome.storage.local.get([key]).then((result) => {
     if (result[key]) {
       fn();
-    } else if (key === 'alwaysDontLoginHistory' && !result[key]) {
+    } else if (key === 'alwaysDontViewLoginHistory' && !result[key]) {
       document.cookie = 'WELCOME_PAGE=false';
     }
   });
@@ -71,7 +71,7 @@ async function extendPassword(sendResponse) {
   const isExpiredPassword = await expiredPasswordResponse.json();
   if (!isExpiredPassword) return;
 
-  await fetch(`${origin}/cus/member/extendPasswordExpirationDate`, {
+  await fetch(`${origin}/chrome-extension/extend-password-expiration-date`, {
     method: 'POST',
   });
 

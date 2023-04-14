@@ -75,8 +75,9 @@
         "https://st2-inairisd-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
         "https://st2-inairitv-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
         "https://qa-inair04-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
-        "https://qa-inair03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct"
-
+        "https://qa-inair03-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://testsvc-mit213-cms-recruiter-co-kr.midasweb.net/cus/selectProduct",
+        "https://st-lsh0503-cms-recruiter-co-kr.midasweb.net/cus/selectProduct"
       ],
       "js": ["js/selectProduct.js"],
       "run_at": "document_start"
@@ -139,8 +140,9 @@
         "https://st2-inairisd-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard",
         "https://st2-inairitv-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard",
         "https://qa-inair04-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard",
-        "https://qa-inair03-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard"
-
+        "https://qa-inair03-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard",
+        "https://testsvc-mit213-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard",
+        "https://st-lsh0503-cms-recruiter-co-kr.midasweb.net/mrs2/manager/dashboard"
       ],
       "js": ["js/dashboard.js"],
       "run_at": "document_start"

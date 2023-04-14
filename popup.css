@@ -30,15 +30,37 @@ section::before {
 }
 
 .section-title {
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
   margin-top: 0px;
   margin-bottom: 0;
 }
 
 .section-description {
+  padding-top: 4px;
   font-size: 12px;
   color: gray;
   margin: 0;
+}
+
+.section-sub-tag {
+  background: rgb(122 103 183);
+  padding: 3px;
+  margin-left: 2px;
+  font-size: 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.section-page-tag {
+  background: black;
+  color: white;
+  padding: 4px;
+  margin: 4px;
+  font-size: 12px;
+  border-radius: 10px;
 }
 
 .reddot {
@@ -120,6 +142,7 @@ section::before {
 
 /* ------------------------ wave ------------------------ */
 .header {
+  cursor: pointer;
   position: relative;
   text-align: center;
   background: linear-gradient(

@@ -14,6 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
     alwaysDontViewPopup: $alwaysDontViewPopupToggle,
     alwaysExtendPassword: $alwaysExtendPasswordToggle,
   };
+
+  document.getElementById('header').addEventListener('click', () => {
+    window.open('https://midasitweb-jira.atlassian.net/wiki/spaces/AATS/pages/3699081544/Jobflex+Chrome+Extension')
+  })
   
   /**
    * ToggleRender
