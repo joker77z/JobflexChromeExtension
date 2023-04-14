@@ -9,16 +9,16 @@ window.addEventListener('DOMContentLoaded', () => {
   const $alwaysExtendPasswordToggle = $('alwaysExtendPasswordToggle');
   const $extendPasswordButton = $('extendPasswordButton');
 
+  const storageKeysToElementMap = {
+    alwaysDontViewLoginHistory: $alwaysDontViewLoginHistoryToggle,
+    alwaysDontViewPopup: $alwaysDontViewPopupToggle,
+    alwaysExtendPassword: $alwaysExtendPasswordToggle,
+  };
+  
   /**
    * ToggleRender
    * Toggle을 추가하면 chrome.storage.local.key: dom 형식으로 넣어주면 됌.
    */
-  const storageKeysToElementMap = {
-    alwaysDontLoginHistory: $alwaysDontViewLoginHistoryToggle,
-    alwaysDontViewPopup: $alwaysDontViewPopupToggle,
-    alwaysExtendPassword: $alwaysExtendPasswordToggle,
-  };
-
   Object.entries(storageKeysToElementMap).forEach(([key, $dom]) => {
     chrome.storage.local.get([key], (result) => {
       $dom.checked = result[key];

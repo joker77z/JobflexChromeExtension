@@ -14,9 +14,9 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 });
 
 const storageKeysToFunctionMap = {
-  alwaysDontLoginHistory: dontViewLoginHistory,
-  alwaysDontViewPopup: dontViewLoginHistory,
-  alwaysExtendPassword: dontViewPopup,
+  alwaysDontViewLoginHistory: dontViewLoginHistory,
+  alwaysDontViewPopup: dontViewPopup,
+  alwaysExtendPassword: extendPassword,
 };
 
 Object.entries(storageKeysToFunctionMap).forEach(([key, fn]) => {
