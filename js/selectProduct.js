@@ -23,7 +23,7 @@ Object.entries(storageKeysToFunctionMap).forEach(([key, fn]) => {
   chrome.storage.local.get([key]).then((result) => {
     if (result[key]) {
       fn();
-    } else if (key === alwaysDontLoginHistory && !result[key]) {
+    } else if (key === 'alwaysDontLoginHistory' && !result[key]) {
       document.cookie = 'WELCOME_PAGE=false';
     }
   });
