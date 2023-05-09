@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="/popup.css" />
     <script src="js/popup.mjs" type="module"></script>
-    <script src="js/util.mjs" type="module"></script>
+    <script src="js/helper/util.mjs" type="module"></script>
   </head>
   <body>
     <div id="header" class="header">
@@ -106,6 +106,15 @@
         <button type="button" id="extendPasswordButton" class="once-button">
           Once
         </button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">응시자 데이터 추가</h2>
+      <h3 class="section-description">(역검센터전형 결과 그리드)</h3>
+      <div class="control-section">
+        <button type="button" id="allPersonAddDataButton">전체 응시자</button>
+        <button type="button" id="selectedPersonAddDataButton">선택한 응시자</button>
       </div>
     </section>
   </body>

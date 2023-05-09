@@ -1,4 +1,4 @@
-import { $ } from './util.mjs';
+import { $ } from '/js/helper/util.mjs';
 
 window.addEventListener('DOMContentLoaded', () => {
   // Selector
@@ -6,8 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
     'alwaysDontViewLoginHistoryToggle',
   );
   const $alwaysDontViewPopupToggle = $('alwaysDontViewPopupToggle');
+
   const $alwaysExtendPasswordToggle = $('alwaysExtendPasswordToggle');
   const $extendPasswordButton = $('extendPasswordButton');
+
+  const $allPersonAddDataButton = $('allPersonAddDataButton');
+  const $selectedPersonAddDataButton = $('selectedPersonAddDataButton');
 
   const storageKeysToElementMap = {
     alwaysDontViewLoginHistory: $alwaysDontViewLoginHistoryToggle,
@@ -45,6 +49,18 @@ window.addEventListener('DOMContentLoaded', () => {
     sendMessageToContentScript('extendPassword');
   });
 
+  $allPersonAddDataButton.addEventListener('click', () => {
+    console.log('all click')
+    sendMessageToContentScript('allPersonAddData');
+  });
+
+  $selectedPersonAddDataButton.addEventListener('click', () => {
+    console.log('selected click')
+    sendMessageToContentScript('selectedPersonAddData');
+  });
+
+  
+
   async function sendMessageToContentScript(key) {
     const [tabs] = await chrome.tabs.query({
       active: true,
@@ -55,7 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
       action: key,
     });
     if (receivedMessage?.success) {
-      window.close();
+      window?.close();
     }
   }
 });
