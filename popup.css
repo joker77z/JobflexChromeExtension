@@ -1,23 +1,64 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Lato', sans-serif;
-  width: 150px;
+  font-family: 'Pretendard-Regular';
+  width: 500px;
   text-align: center;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Pretendard-Regular';
 }
 
 h1 {
   font-size: 16px;
 }
 
-section {
-  position: relative;
-  margin-top: 10px;
-  padding: 10px 0;
-  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+.toggle-container {
+  display: flex;
+  flex-flow: row;
 }
 
-section::before {
+.toggle-container .section {
+  width: 33%;
+  margin: 10px;
+}
+
+.section {
+  position: relative;
+  padding: 10px 10px;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  background: white;
+}
+
+.section.acc {
+  margin: 10px;
+}
+
+.section.acc button {
+  width: 100px;
+  height: 24px;
+
+  padding: 4px 4px;
+  margin-left: 10px;
+
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  background: lightsteelblue;
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
+}
+
+.section::before {
   position: absolute;
   top: 3px;
   left: 3px;
@@ -30,6 +71,7 @@ section::before {
 }
 
 .section-title {
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,25 +112,26 @@ section::before {
 
 .control-section {
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  justify-content: center;
   align-items: center;
-  padding: 10px 30px;
+  margin-top: 10px;
+}
+
+.control-section .toggle-text {
+  font-size: 11px;
+  width: 40px;
 }
 
 .control-section .toggle-label {
-  width: 100%;
+  width: 50px;
   height: 24px;
   display: block;
   position: relative;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+  box-shadow: 0 0 16px 10px rgba(0 0 0 / 15%);
   cursor: pointer;
-}
-
-.toggle-label .toggle-text {
-  line-height: 24px;
-  font-size: 14px;
 }
 
 .control-section .toggle-icon {
@@ -99,11 +142,11 @@ section::before {
   left: 2px;
   transform: translateY(-50%);
   border-radius: 50%;
-  background: #f03d3d;
+  background: blue;
 }
 
 .always-checkbox:checked ~ .toggle-label {
-  background: #f03d3d;
+  background: blue;
 }
 
 .always-checkbox:checked ~ .toggle-label .toggle-icon {
@@ -111,9 +154,9 @@ section::before {
   background: #fff;
 }
 
-.always-checkbox:checked ~ .toggle-label .toggle-text {
+/* .always-checkbox:checked ~ .toggle-label .toggle-text {
   color: #fff;
-}
+} */
 
 .toggle-label,
 .toggle-icon,
@@ -130,28 +173,25 @@ section::before {
   height: 24px;
 
   padding: 4px 0;
-  margin-top: 10px;
+  margin-left: 10px;
 
   font-size: 14px;
   border: none;
   border-radius: 15px;
-  background: #fff;
+  background: lightsteelblue;
   box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
   cursor: pointer;
 }
 
 /* ------------------------ wave ------------------------ */
-.header {
-  cursor: pointer;
+.wave {
   position: relative;
   text-align: center;
-  background: linear-gradient(
-    60deg,
-    rgba(84, 58, 183, 1) 0%,
-    rgba(0, 172, 193, 1) 100%
-  );
+  background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
   color: white;
+  margin: 0;
 }
+
 .logo {
   width: 50px;
   fill: white;
@@ -161,19 +201,25 @@ section::before {
 }
 
 .inner-header {
+  cursor: pointer;
   height: 10vh;
   width: 100%;
   margin: 0;
   padding: 10px 0 0 0;
 }
 
+.inner-header h1 {
+  margin-left: 10px;
+}
+
 .flex {
   /*Flexbox for containers*/
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   text-align: center;
   margin-top: 4px;
+  margin-bottom: 16px;
 }
 
 .flex img {
@@ -184,9 +230,9 @@ section::before {
 
 .waves {
   position: relative;
-  width: 100%;
+  width: 96%;
   height: 5vh;
-  margin-bottom: -7px; /*Fix for safari gap*/
+  margin-bottom: 10px;
   min-height: 25px;
   max-height: 50px;
 }

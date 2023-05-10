@@ -1,115 +1,42 @@
 <!DOCTYPE >
 <html>
   <head>
-    <title>JOBFLEX Extension</title>
+    <title>Insight Extension</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="/popup.css" />
     <script src="js/popup.mjs" type="module"></script>
     <script src="js/helper/util.mjs" type="module"></script>
   </head>
-  <body>
-    <div id="header" class="header">
-      <div class="inner-header flex">
-        <img
-          src="/icons/jobflex.png"
-        />
-        <h1>JOBFLEX Extension</h1>
-      </div>
-
-      <!--Waves Container-->
-      <div>
-        <svg
-          class="waves"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 24 150 28"
-          preserveAspectRatio="none"
-          shape-rendering="auto"
-        >
-          <defs>
-            <path
-              id="gentle-wave"
-              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-            />
-          </defs>
-          <g class="parallax">
-            <use
-              xlink:href="#gentle-wave"
-              x="48"
-              y="0"
-              fill="rgba(255,255,255,0.7"
-            />
-            <use
-              xlink:href="#gentle-wave"
-              x="48"
-              y="3"
-              fill="rgba(255,255,255,0.5)"
-            />
-            <use
-              xlink:href="#gentle-wave"
-              x="48"
-              y="5"
-              fill="rgba(255,255,255,0.3)"
-            />
-            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-          </g>
-        </svg>
-      </div>
-      <!--Waves end-->
+  <body class="wave">
+    <div id="header" class="inner-header flex">
+      <img src="/icons/jobflex.png" />
+      <h1>Insight Extension</h1>
     </div>
 
-    <section class="section">
-      <h2 class="section-title">로그인 팝업 종료</h2>
-      <h3 class="section-description">(제품선택)</h3>
-      <div class="control-section">
-        <input
-          type="checkbox"
-          id="alwaysDontViewLoginHistoryToggle"
-          class="always-checkbox"
-        />
-        <label for="alwaysDontViewLoginHistoryToggle" class="toggle-label">
-          <span class="toggle-text">Always</span>
-          <div class="toggle-icon"></div>
-        </label>
-      </div>
-    </section>
+    <!--Waves Container-->
+    <!-- <div>
+      <svg
+        class="waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto"
+      >
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div> -->
+    <!--Waves end-->
 
-    <section class="section">
-      <h2 class="section-title">공지 팝업 종료</h2>
-      <h3 class="section-description">(제품선택, 대시보드)</h3>
-      <div class="control-section">
-        <input
-          type="checkbox"
-          id="alwaysDontViewPopupToggle"
-          class="always-checkbox"
-        />
-        <label for="alwaysDontViewPopupToggle" class="toggle-label">
-          <span class="toggle-text">Always</span>
-          <div class="toggle-icon"></div>
-        </label>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2 class="section-title">비밀번호 기한 연장<span class="section-sub-tag">2달</span></h2>
-      <h3 class="section-description">(제품선택)</h3>
-      <div class="control-section">
-        <input
-          type="checkbox"
-          id="alwaysExtendPasswordToggle"
-          class="always-checkbox"
-        />
-        <label for="alwaysExtendPasswordToggle" class="toggle-label">
-          <span class="toggle-text">Always</span>
-          <div class="toggle-icon"></div>
-        </label>
-        <button type="button" id="extendPasswordButton" class="once-button">
-          Once
-        </button>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="section acc">
       <h2 class="section-title">응시자 데이터 추가</h2>
       <h3 class="section-description">(역검센터전형 결과 그리드)</h3>
       <div class="control-section">
@@ -117,5 +44,41 @@
         <button type="button" id="selectedPersonAddDataButton">선택한 응시자</button>
       </div>
     </section>
+
+    <div class="toggle-container">
+      <section class="section">
+        <h2 class="section-title">로그인 팝업 OFF</h2>
+        <h3 class="section-description">(제품선택)</h3>
+        <div class="control-section">
+          <input type="checkbox" id="alwaysDontViewLoginHistoryToggle" class="always-checkbox" />
+          <label for="alwaysDontViewLoginHistoryToggle" class="toggle-label">
+            <div class="toggle-icon"></div>
+          </label>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">공지 팝업 OFF</h2>
+        <h3 class="section-description">(제품선택, 대시보드)</h3>
+        <div class="control-section">
+          <input type="checkbox" id="alwaysDontViewPopupToggle" class="always-checkbox" />
+          <label for="alwaysDontViewPopupToggle" class="toggle-label">
+            <div class="toggle-icon"></div>
+          </label>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">비밀번호 연장<span class="section-sub-tag">2달</span></h2>
+        <h3 class="section-description">(제품선택)</h3>
+        <div class="control-section">
+          <input type="checkbox" id="alwaysExtendPasswordToggle" class="always-checkbox" />
+          <label for="alwaysExtendPasswordToggle" class="toggle-label">
+            <div class="toggle-icon"></div>
+          </label>
+          <button type="button" id="extendPasswordButton" class="once-button">Once</button>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

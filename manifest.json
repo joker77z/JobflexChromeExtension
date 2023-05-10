@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Jobflex Extension",
-  "version": "1.0",
+  "version": "1.1",
   "description": "개발 및 검증 시 반복되는 비밀번호 연장모달, 로그인기록 팝업, 공지 팝업 등을 on, off할 수 있습니다.",
   "action": {
     "default_popup": "popup.html"
@@ -24,23 +24,17 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["js/pages/selectProduct.js"],
       "run_at": "document_start"
     },
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["js/pages/dashboard.js"],
       "run_at": "document_start"
     },
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["js/pages/accGrid.js"],
       "run_at": "document_start"
     }
