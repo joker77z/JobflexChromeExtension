@@ -4,75 +4,80 @@
  */
 function matchUrlToRun(path) {
   const domainList = [
-      "http://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com:3000",
-      "https://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com",
-      "https://st-jobflexqaqc-cms-recruiter-co-kr.midasweb.net",
-      "https://st-smw1020-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobflex-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobflexqa04-cms-recruiter-co-kr.midasweb.net",
-      "https://st-sec01-cms-recruiter-co-kr.midasweb.net",
-      "https://st-sec001-cms-recruiter-co-kr.midasweb.net",
-      "https://st-sec02-cms-recruiter-co-kr.midasweb.net",
-      "https://st-kjm07-cms-recruiter-co-kr.midasweb.net",
-      "https://st-sec04-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda02-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda03-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda04-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda05-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda06-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda07-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda08-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda09-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jobda10-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jf2-cms-recruiter-co-kr.midasweb.net",
-      "https://st-smw10203-cms-recruiter-co-kr.midasweb.net",
-      "https://st-simson-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jax20-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jax20isd-cms-recruiter-co-kr.midasweb.net",
-      "https://st-11325re-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jax10-cms-recruiter-co-kr.midasweb.net",
-      "https://st-jax20itv-cms-recruiter-co-kr.midasweb.net",
-      "https://st-sec03-cms-recruiter-co-kr.midasweb.net",
-      "https://st-inair01-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jf-smw1020-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobflex01-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobflex02-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobisd-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobitv-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-interview01-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobflex-cms-recruiter-co-kr.midasweb.net",
-      "https://test02-cms-recruiter-co-kr.midasweb.net",
-      "https://acc01-all-cms-recruiter-co-kr.midasweb.net",
-      "https://acc02-integ-cms-recruiter-co-kr.midasweb.net",
-      "https://acc03-sr-game-cms-recruiter-co-kr.midasweb.net",
-      "https://acc04-sr-cms-recruiter-co-kr.midasweb.net",
-      "https://acc05-v2-cms-recruiter-co-kr.midasweb.net",
-      "https://acc06-custom-cms-recruiter-co-kr.midasweb.net",
-      "https://pdm-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-jobflex2-02-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-deletetest-cms-recruiter-co-kr.midasweb.net",
-      "https://qa-jobflex03-cms-recruiter-co-kr.midasweb.net",
-      "https://qa-jobflex04-cms-recruiter-co-kr.midasweb.net",
-      "https://qa-jobda02-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-inair01-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-inair02-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-inair-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-inairisd-cms-recruiter-co-kr.midasweb.net",
-      "https://st2-inairitv-cms-recruiter-co-kr.midasweb.net",
-      "https://qa-inair04-cms-recruiter-co-kr.midasweb.net",
-      "https://qa-inair03-cms-recruiter-co-kr.midasweb.net",
-      "https://testsvc-mit213-cms-recruiter-co-kr.midasweb.net",
-      "https://st-lsh0503-cms-recruiter-co-kr.midasweb.net"
+    'http://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com:3000',
+    'https://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com',
+    'https://st-jobflexqaqc-cms-recruiter-co-kr.midasweb.net',
+    'https://st-smw1020-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobflex-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobflexqa04-cms-recruiter-co-kr.midasweb.net',
+    'https://st-sec01-cms-recruiter-co-kr.midasweb.net',
+    'https://st-sec001-cms-recruiter-co-kr.midasweb.net',
+    'https://st-sec02-cms-recruiter-co-kr.midasweb.net',
+    'https://st-kjm07-cms-recruiter-co-kr.midasweb.net',
+    'https://st-sec04-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda02-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda03-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda04-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda05-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda06-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda07-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda08-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda09-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jobda10-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jf2-cms-recruiter-co-kr.midasweb.net',
+    'https://st-smw10203-cms-recruiter-co-kr.midasweb.net',
+    'https://st-simson-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jax20-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jax20isd-cms-recruiter-co-kr.midasweb.net',
+    'https://st-11325re-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jax10-cms-recruiter-co-kr.midasweb.net',
+    'https://st-jax20itv-cms-recruiter-co-kr.midasweb.net',
+    'https://st-sec03-cms-recruiter-co-kr.midasweb.net',
+    'https://st-inair01-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jf-smw1020-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobflex01-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobflex02-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobisd-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobitv-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-interview01-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobflex-cms-recruiter-co-kr.midasweb.net',
+    'https://test02-cms-recruiter-co-kr.midasweb.net',
+    'https://acc01-all-cms-recruiter-co-kr.midasweb.net',
+    'https://acc02-integ-cms-recruiter-co-kr.midasweb.net',
+    'https://acc03-sr-game-cms-recruiter-co-kr.midasweb.net',
+    'https://acc04-sr-cms-recruiter-co-kr.midasweb.net',
+    'https://acc05-v2-cms-recruiter-co-kr.midasweb.net',
+    'https://acc06-custom-cms-recruiter-co-kr.midasweb.net',
+    'https://pdm-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-jobflex2-02-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-deletetest-cms-recruiter-co-kr.midasweb.net',
+    'https://qa-jobflex03-cms-recruiter-co-kr.midasweb.net',
+    'https://qa-jobflex04-cms-recruiter-co-kr.midasweb.net',
+    'https://qa-jobda02-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-inair01-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-inair02-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-inair-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-inairisd-cms-recruiter-co-kr.midasweb.net',
+    'https://st2-inairitv-cms-recruiter-co-kr.midasweb.net',
+    'https://qa-inair04-cms-recruiter-co-kr.midasweb.net',
+    'https://qa-inair03-cms-recruiter-co-kr.midasweb.net',
+    'https://testsvc-mit213-cms-recruiter-co-kr.midasweb.net',
+    'https://st-lsh0503-cms-recruiter-co-kr.midasweb.net',
   ];
-  
-  const includePathDomain = domainList.map(domain => domain + path);
-  const currentUrl = window.location.href;
 
-  if(includePathDomain.includes(currentUrl)) {
-      return true;
+  const includePathDomain = domainList.map((domain) => domain + path);
+  let currentUrl = window.location.href;
+
+  // 맨 뒤에 #이 붙는 경우가 있음.
+  if (currentUrl.slice(-1) === '#') {
+    currentUrl = currentUrl.slice(0, currentUrl.indexOf('#'));
+  }
+
+  if (includePathDomain.includes(currentUrl)) {
+    return true;
   } else {
-      return false;
+    return false;
   }
 }
 
-export {matchUrlToRun};
+export { matchUrlToRun };

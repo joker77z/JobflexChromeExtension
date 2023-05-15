@@ -2,7 +2,7 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
-  commonScript.matchUrlToRun('/cus/selectProduct') ? console.log('%c [Insight Extension] 제품선택 페이지 정상 진입', "color: green") : ''
+  commonScript.matchUrlToRun('/cus/selectProduct') ? console.log('%c [Jobflex Extension] 제품선택 페이지 정상 진입', 'color: green') : '';
 
   if (!commonScript.matchUrlToRun('/cus/selectProduct')) {
     return false;
@@ -43,9 +43,7 @@
 
   function dontViewLoginHistory(sendResponse) {
     if (sendResponse) {
-      const modalTitle =
-        document.querySelector('.h1.face-lift-h1') ||
-        document.querySelector('.h1 ');
+      const modalTitle = document.querySelector('.h1.face-lift-h1') || document.querySelector('.h1 ');
       if (modalTitle.textContent === '로그인 내역') {
         modalTitle.closest('#modalFrm').remove();
       }
@@ -74,12 +72,9 @@
     const origin = window.location.origin;
 
     // 비밀번호 만료가 되었는지 먼저 체크. 만료 되었으면 연장api를 실행.
-    const expiredPasswordResponse = await fetch(
-      `${origin}/cus/member/isExpiredPassword`,
-      {
-        method: 'POST',
-      },
-    );
+    const expiredPasswordResponse = await fetch(`${origin}/cus/member/isExpiredPassword`, {
+      method: 'POST',
+    });
     const isExpiredPassword = await expiredPasswordResponse.json();
     if (!isExpiredPassword) return;
 

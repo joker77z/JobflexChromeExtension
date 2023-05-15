@@ -6,23 +6,24 @@
   const commonScript = await import(src);
 
   commonScript.matchUrlToRun('/mrs2/manager/screening/list')
-    ? console.log('%c [Insight Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', 'color: green')
+    ? console.log('%c [Jobflex Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', 'color: green')
     : '';
   if (!commonScript.matchUrlToRun('/mrs2/manager/screening/list')) {
     return false;
   }
 
-  function accGridReload() {
-    // 제목을 기억하고, 그리드를 끄고, 다시 그리드 클릭
-    const recordScreeningName = document.querySelector('#screeningName').textContent;
-    document.querySelector('#modalGrid').remove();
+  // 응시자 데이터가 바로 추가되지 않기 때문에 바로 리로드 할 필요가 없어서 일단 주석처리.
+  // function accGridReload() {
+  //   // 제목을 기억하고, 그리드를 끄고, 다시 그리드 클릭
+  //   const recordScreeningName = document.querySelector('#screeningName').textContent;
+  //   document.querySelector('#modalGrid').remove();
 
-    [...document.querySelectorAll('[data-button="modifyScreening"]')].forEach((el) => {
-      if (recordScreeningName === el.textContent) {
-        el.closest('tr').querySelector('[data-button="result"]').click();
-      }
-    });
-  }
+  //   [...document.querySelectorAll('[data-button="modifyScreening"]')].forEach((el) => {
+  //     if (recordScreeningName === el.textContent) {
+  //       el.closest('tr').querySelector('[data-button="result"]').click();
+  //     }
+  //   });
+  // }
 
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
     if (!document.querySelector('.gridH1')) {
@@ -49,23 +50,9 @@
       screeningSn: 0,
     };
 
-    [...document.querySelectorAll('input.checkbox[name="resumeSn"]')].forEach((checkbox) => {
-      const checkedScreeningResumeSn = checkbox.getAttribute('data-screeningresumesn');
-      const accStatusButton = document.querySelector(`button[data-screeningresumesn="${checkedScreeningResumeSn}"]`);
-      const accStatusText = accStatusButton.previousSibling.textContent;
+    checkedData.screeningSn = Number(document.querySelector('input.checkbox[name="resumeSn"]').getAttribute('data-screeningsn'));
 
-      if (!accStatus.includes(accStatusText)) {
-        alert(
-          '응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다. 해당 지원자를 제외한 나머지 지원자에 대해 적용됩니다.',
-        );
-      }
-
-      checkedData.screeningResumeSns.push(Number(checkedScreeningResumeSn));
-
-      if (!checkedData.screeningSn) {
-        checkedData.screeningSn = Number(checkbox.getAttribute('data-screeningsn'));
-      }
-    });
+    alert('"완료", "미용시", "미완료", "접속횟수 초과" 상태인 지원자만 적용됩니다.');
 
     fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
       method: 'POST',
@@ -75,8 +62,8 @@
       body: JSON.stringify(checkedData),
     });
 
-    accGridReload();
-    console.log(checkedData);
+    // accGridReload();
+    console.log(`%c [Jobflex Extension] checkedData: ${checkedData}`, 'color: green');
   }
 
   function selectedPersonAddData(sendResponse) {
@@ -87,11 +74,13 @@
       screeningSn: 0,
     };
 
-    const checkedInput = [...document.querySelectorAll('input.checkbox:checked')];
+    const checkedInput = [...document.querySelectorAll('input.checkbox[name="resumeSn"]:checked')];
     if (checkedInput.length === 0) {
       alert('체크한 지원자가 없습니다 :(');
       return false;
     }
+
+    checkedData.screeningSn = Number(document.querySelector('input.checkbox[name="resumeSn"]').getAttribute('data-screeningsn'));
 
     checkedInput.forEach((checkbox) => {
       const checkedScreeningResumeSn = checkbox.getAttribute('data-screeningresumesn');
@@ -105,10 +94,6 @@
       }
 
       checkedData.screeningResumeSns.push(Number(checkedScreeningResumeSn));
-
-      if (!checkedData.screeningSn) {
-        checkedData.screeningSn = Number(checkbox.getAttribute('data-screeningsn'));
-      }
     });
 
     fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
@@ -119,7 +104,7 @@
       body: JSON.stringify(checkedData),
     });
 
-    accGridReload();
-    console.log(checkedData);
+    // accGridReload();
+    console.log(`%c [Jobflex Extension] checkedData: ${checkedData}`, 'color: green');
   }
 })();
