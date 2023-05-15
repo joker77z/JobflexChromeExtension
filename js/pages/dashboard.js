@@ -2,7 +2,9 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
-  commonScript.matchUrlToRun('/mrs2/manager/dashboard') ? console.log('%c [Jobflex Extension] 대시보드 페이지 정상 진입', 'color: green') : '';
+  commonScript.matchUrlToRun('/mrs2/manager/dashboard')
+    ? console.log('%c [Jobflex Extension] 대시보드 페이지 정상 진입', 'color: white; background: #00C17C; padding: 10px;')
+    : '';
 
   if (!commonScript.matchUrlToRun('/mrs2/manager/dashboard')) {
     return false;

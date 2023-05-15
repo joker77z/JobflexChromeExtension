@@ -2,7 +2,9 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
-  commonScript.matchUrlToRun('/cus/selectProduct') ? console.log('%c [Jobflex Extension] 제품선택 페이지 정상 진입', 'color: green') : '';
+  commonScript.matchUrlToRun('/cus/selectProduct')
+    ? console.log('%c [Jobflex Extension] 제품선택 페이지 정상 진입', 'color: white; background: #00C17C; padding: 10px;')
+    : '';
 
   if (!commonScript.matchUrlToRun('/cus/selectProduct')) {
     return false;
