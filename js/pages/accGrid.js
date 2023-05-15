@@ -5,8 +5,12 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
+  console.log(`%c [Jobflex Extension] sdfwf`, 'color: white; background: #00C17C');
   commonScript.matchUrlToRun('/mrs2/manager/screening/list')
-    ? console.log('%c [Jobflex Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', 'color: green')
+    ? console.log(
+        '%c [Jobflex Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.',
+        'color: white; background: #00C17C; padding: 10px;',
+      )
     : '';
   if (!commonScript.matchUrlToRun('/mrs2/manager/screening/list')) {
     return false;
@@ -63,7 +67,7 @@
     });
 
     // accGridReload();
-    console.dir(`%c [Jobflex Extension] checkedData: ${JSON.stringify(checkedData)}`, 'color: green');
+    console.log(`%c [Jobflex Extension] 전체 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, 'color: green');
   }
 
   function selectedPersonAddData(sendResponse) {
@@ -105,6 +109,6 @@
     });
 
     // accGridReload();
-    console.dir(`%c [Jobflex Extension] checkedData: ${JSON.stringify(checkedData)}`, 'color: green');
+    console.log(`%c [Jobflex Extension] 선택 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, 'color: green; background: black');
   }
 })();
