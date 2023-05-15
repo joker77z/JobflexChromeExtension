@@ -4,12 +4,29 @@
 
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
+
+  commonScript.matchUrlToRun('/mrs2/manager/screening/list') ? console.log('%c [Insight Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', "color: green") : ''
   if (!commonScript.matchUrlToRun('/mrs2/manager/screening/list')) {
     return false;
   }
 
+  function accGridReload() {
+    // 제목을 기억하고, 그리드를 끄고, 다시 그리드 클릭
+    const recordScreeningName = document.querySelector('#screeningName').textContent;
+    document.querySelector('#modalGrid').remove();
+
+    [...document.querySelectorAll('[data-button="modifyScreening"]')].forEach(el => {
+      if(recordScreeningName === el.textContent) {
+        el.closest('tr').querySelector('[data-button="result"]').click();
+      }
+    });
+  }
+
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-    if (!document.querySelector('.gridH1')) return;
+    if (!document.querySelector('.gridH1')) {
+      alert('평가 결과 그리드 내에서만 사용할 수 있습니다 :)');
+      return false;
+    }
 
     if (msg.from === 'popup') {
       switch (msg.action) {
@@ -55,6 +72,7 @@
     //   body: JSON.stringify(checkedData),
     // });
 
+    accGridReload();
     console.log(checkedData);
   }
 
@@ -66,7 +84,13 @@
       checkedScreeningSn: 0,
     };
 
-    [...document.querySelectorAll('input.checkbox:checked')].forEach((checkbox) => {
+    const checkedInput = [...document.querySelectorAll('input.checkbox:checked')];
+    if(checkedInput.length === 0) {
+      alert('체크한 지원자가 없습니다 :(')
+      return false;
+    }
+
+    checkedInput.forEach((checkbox) => {
       const checkedScreeningResumeSn = checkbox.getAttribute('data-screeningresumesn');
       const accStatusButton = document.querySelector(`button[data-screeningresumesn="${checkedScreeningResumeSn}"]`);
       const accStatusText = accStatusButton.previousSibling.textContent;
@@ -91,6 +115,7 @@
     //   body: JSON.stringify(checkedData),
     // });
 
+    accGridReload();
     console.log(checkedData);
   }
 })();

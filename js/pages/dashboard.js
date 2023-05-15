@@ -2,7 +2,7 @@
   const src = chrome.runtime.getURL("js/helper/common.js");
   const commonScript = await import(src);
 
-  console.log(commonScript.matchUrlToRun('/mrs2/manager/dashboard'));
+  commonScript.matchUrlToRun('/mrs2/manager/dashboard') ?  console.log('%c [Insight Extension] 대시보드 페이지 정상 진입', "color: green") : ''
 
   if(!commonScript.matchUrlToRun('/mrs2/manager/dashboard')) {
     return false;

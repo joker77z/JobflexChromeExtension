@@ -50,12 +50,10 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   $allPersonAddDataButton.addEventListener('click', () => {
-    console.log('all click')
     sendMessageToContentScript('allPersonAddData');
   });
 
   $selectedPersonAddDataButton.addEventListener('click', () => {
-    console.log('selected click')
     sendMessageToContentScript('selectedPersonAddData');
   });
 

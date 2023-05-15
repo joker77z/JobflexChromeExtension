@@ -2,15 +2,13 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
-  console.log(commonScript.matchUrlToRun('/cus/selectProduct'));
+  commonScript.matchUrlToRun('/cus/selectProduct') ? console.log('%c [Insight Extension] 제품선택 페이지 정상 진입', "color: green") : ''
 
   if (!commonScript.matchUrlToRun('/cus/selectProduct')) {
     return false;
   }
 
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-    console.log('message received');
-
     if (msg.from === 'popup') {
       switch (msg.action) {
         case 'alwaysDontViewLoginHistory':
@@ -34,8 +32,6 @@
   };
 
   Object.entries(storageKeysToFunctionMap).forEach(([key, fn]) => {
-    console.log('mapping');
-
     chrome.storage.local.get([key]).then((result) => {
       if (result[key]) {
         fn();
@@ -46,8 +42,6 @@
   });
 
   function dontViewLoginHistory(sendResponse) {
-    console.log('함수 실행');
-
     if (sendResponse) {
       const modalTitle =
         document.querySelector('.h1.face-lift-h1') ||
@@ -61,8 +55,6 @@
   }
 
   function dontViewPopup(sendResponse) {
-    console.log('함수 실행');
-
     let timer = setInterval(() => {
       if (document.querySelector('[data-popup]')) {
         removeDOM();
@@ -79,8 +71,6 @@
   }
 
   async function extendPassword(sendResponse) {
-    console.log('함수 실행');
-
     const origin = window.location.origin;
 
     // 비밀번호 만료가 되었는지 먼저 체크. 만료 되었으면 연장api를 실행.
