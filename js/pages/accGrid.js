@@ -5,7 +5,9 @@
   const src = chrome.runtime.getURL('js/helper/common.js');
   const commonScript = await import(src);
 
-  commonScript.matchUrlToRun('/mrs2/manager/screening/list') ? console.log('%c [Insight Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', "color: green") : ''
+  commonScript.matchUrlToRun('/mrs2/manager/screening/list')
+    ? console.log('%c [Insight Extension] 전형진행현황 페이지 정상 진입, Extension은 그리드에서 동작합니다.', 'color: green')
+    : '';
   if (!commonScript.matchUrlToRun('/mrs2/manager/screening/list')) {
     return false;
   }
@@ -15,8 +17,8 @@
     const recordScreeningName = document.querySelector('#screeningName').textContent;
     document.querySelector('#modalGrid').remove();
 
-    [...document.querySelectorAll('[data-button="modifyScreening"]')].forEach(el => {
-      if(recordScreeningName === el.textContent) {
+    [...document.querySelectorAll('[data-button="modifyScreening"]')].forEach((el) => {
+      if (recordScreeningName === el.textContent) {
         el.closest('tr').querySelector('[data-button="result"]').click();
       }
     });
@@ -43,8 +45,8 @@
   function allPersonAddData(sendResponse) {
     // 전형번호는 빈 배열, 응시자 번호를 보낸다.
     const checkedData = {
-      checkedScreeningResumeSn: [],
-      checkedScreeningSn: 0,
+      screeningResumeSns: [],
+      screeningSn: 0,
     };
 
     [...document.querySelectorAll('input.checkbox[name="resumeSn"]')].forEach((checkbox) => {
@@ -53,24 +55,25 @@
       const accStatusText = accStatusButton.previousSibling.textContent;
 
       if (!accStatus.includes(accStatusText)) {
-        alert('응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다!');
-        return;
+        alert(
+          '응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다. 해당 지원자를 제외한 나머지 지원자에 대해 적용됩니다.',
+        );
       }
 
-      checkedData.checkedScreeningResumeSn.push(checkedScreeningResumeSn);
+      checkedData.screeningResumeSns.push(Number(checkedScreeningResumeSn));
 
-      if (!checkedData.checkedScreeningSn) {
-        checkedData.checkedScreeningSn = Number(checkbox.getAttribute('data-screeningsn'));
+      if (!checkedData.screeningSn) {
+        checkedData.screeningSn = Number(checkbox.getAttribute('data-screeningsn'));
       }
     });
 
-    // fetch(`${origin}/chrome-extension/extend-password-expiration-date`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(checkedData),
-    // });
+    fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(checkedData),
+    });
 
     accGridReload();
     console.log(checkedData);
@@ -80,13 +83,13 @@
     // 체크된 전형번호, 응시자 번호를 읽는다.
     // 이 때 만약 완료, 미응시, 미완료, 접속횟수 초과가 포함되어 있다면 Alert를 띄운다.
     const checkedData = {
-      checkedScreeningResumeSn: [],
-      checkedScreeningSn: 0,
+      screeningResumeSns: [],
+      screeningSn: 0,
     };
 
     const checkedInput = [...document.querySelectorAll('input.checkbox:checked')];
-    if(checkedInput.length === 0) {
-      alert('체크한 지원자가 없습니다 :(')
+    if (checkedInput.length === 0) {
+      alert('체크한 지원자가 없습니다 :(');
       return false;
     }
 
@@ -96,24 +99,25 @@
       const accStatusText = accStatusButton.previousSibling.textContent;
 
       if (!accStatus.includes(accStatusText)) {
-        alert('응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다!');
-        return;
+        alert(
+          '응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다. 해당 지원자를 제외한 나머지 지원자에 대해 적용됩니다.',
+        );
       }
 
-      checkedData.checkedScreeningResumeSn.push(checkedScreeningResumeSn);
+      checkedData.screeningResumeSns.push(Number(checkedScreeningResumeSn));
 
-      if (!checkedData.checkedScreeningSn) {
-        checkedData.checkedScreeningSn = Number(checkbox.getAttribute('data-screeningsn'));
+      if (!checkedData.screeningSn) {
+        checkedData.screeningSn = Number(checkbox.getAttribute('data-screeningsn'));
       }
     });
 
-    // fetch(`${origin}/chrome-extension/extend-password-expiration-date`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(checkedData),
-    // });
+    fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(checkedData),
+    });
 
     accGridReload();
     console.log(checkedData);
