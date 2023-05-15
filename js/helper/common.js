@@ -5,6 +5,7 @@
 function matchUrlToRun(path) {
   const domainList = [
     'http://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com:3000',
+    'http://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com:8080',
     'https://demo01-cms-recruiter-co-kr.kr-dv-midasitwebsol.com',
     'https://st-jobflexqaqc-cms-recruiter-co-kr.midasweb.net',
     'https://st-smw1020-cms-recruiter-co-kr.midasweb.net',

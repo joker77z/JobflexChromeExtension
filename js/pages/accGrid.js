@@ -63,7 +63,7 @@
     });
 
     // accGridReload();
-    console.log(`%c [Jobflex Extension] checkedData: ${checkedData}`, 'color: green');
+    console.dir(`%c [Jobflex Extension] checkedData: ${JSON.stringify(checkedData)}`, 'color: green');
   }
 
   function selectedPersonAddData(sendResponse) {
@@ -105,6 +105,6 @@
     });
 
     // accGridReload();
-    console.log(`%c [Jobflex Extension] checkedData: ${checkedData}`, 'color: green');
+    console.dir(`%c [Jobflex Extension] checkedData: ${JSON.stringify(checkedData)}`, 'color: green');
   }
 })();
