@@ -29,17 +29,20 @@
   // }
 
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-    if (!document.querySelector('.gridH1')) {
-      alert('평가 결과 그리드 내에서만 사용할 수 있습니다 :)');
-      return false;
-    }
-
     if (msg.from === 'popup') {
       switch (msg.action) {
         case 'selectedPersonAddData':
+          if (!document.querySelector('.gridH1')) {
+            alert('평가 결과 그리드 내에서만 사용할 수 있습니다 :)');
+            return false;
+          }
           selectedPersonAddData(sendResponse);
           break;
         case 'allPersonAddData':
+          if (!document.querySelector('.gridH1')) {
+            alert('평가 결과 그리드 내에서만 사용할 수 있습니다 :)');
+            return false;
+          }
           allPersonAddData(sendResponse);
           break;
       }
