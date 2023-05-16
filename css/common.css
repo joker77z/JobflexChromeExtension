@@ -1,0 +1,57 @@
+/* 응시자 데이터 추가 모달 */
+.modal-wrapper {
+  position: absolute;
+  bottom: 45%;
+  left: 45%;
+
+  width: 300px;
+  padding: 20px;
+  background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+  z-index: 10101;
+  box-shadow: 0 0 10px black;
+  transition: all 0.2s ease-out;
+}
+
+.modal-wrapper .title {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.modal-wrapper .description {
+  color: white;
+  padding: 10px;
+  margin-bottom: 100px;
+  line-height: 1.5;
+}
+
+.modal-wrapper .confirm-button {
+  margin-top: 10px;
+  background: lightgray;
+  border: none;
+  position: absolute;
+  bottom: 64px;
+  padding: 8px;
+  width: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  color: black;
+}
+
+.modal-wrapper .always-confirm-button {
+  margin-top: 10px;
+  background: lightgray;
+  border: none;
+  position: absolute;
+  bottom: 20px;
+  padding: 8px;
+  width: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  color: black;
+}
