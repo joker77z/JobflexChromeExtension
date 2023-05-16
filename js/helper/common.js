@@ -95,13 +95,7 @@ function modal(title, description, useConfirmButton, useAlwaysConfirmButton) {
     modalWrapper.innerHTML = `
       ${title ? `<span class="title">${title}</span>` : ""}
       ${description ? `<p class="description">${description}</p>` : ""}
-      ${
-        useConfirmButton
-          ? `<button id="confirmButton" class="confirm-button">
-            확인
-          </button>`
-          : ""
-      }
+      <button id="confirmButton" class="confirm-button">확인=</button>
       ${
         useAlwaysConfirmButton
           ? `<button id="alwaysConfirmButton" class="always-confirm-button">
@@ -113,11 +107,11 @@ function modal(title, description, useConfirmButton, useAlwaysConfirmButton) {
 
     dim.insertAdjacentElement("beforeend", modalWrapper);
 
-    document.querySelector("#confirmButton").addEventListener("click", () => {
+    document.querySelector("#confirmButton")?.addEventListener("click", () => {
       dim.remove();
     });
 
-    document.querySelector("#alwaysConfirmButton").addEventListener("click", () => {
+    document.querySelector("#alwaysConfirmButton")?.addEventListener("click", () => {
       dim.remove();
       localStorage.setItem("dontViewAddAccDataModal", true);
     });
