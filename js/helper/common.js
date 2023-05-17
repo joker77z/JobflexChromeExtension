@@ -95,14 +95,16 @@ function modal(title, description, useConfirmButton, useAlwaysConfirmButton) {
     modalWrapper.innerHTML = `
       ${title ? `<span class="title">${title}</span>` : ""}
       ${description ? `<p class="description">${description}</p>` : ""}
-      <button id="confirmButton" class="confirm-button">확인=</button>
-      ${
-        useAlwaysConfirmButton
-          ? `<button id="alwaysConfirmButton" class="always-confirm-button">
-            다시는 보지 않기
-          </button>`
-          : ""
-      }
+      <div class="button-wrapper">
+        <button id="confirmButton" class="confirm-button">확인</button>
+        ${
+          useAlwaysConfirmButton
+            ? `<button id="alwaysConfirmButton" class="always-confirm-button">
+              다시는 보지 않기
+            </button>`
+            : ""
+        }
+      </div>
     `;
 
     dim.insertAdjacentElement("beforeend", modalWrapper);

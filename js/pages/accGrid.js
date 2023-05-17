@@ -48,7 +48,7 @@
     }
   });
 
-  function allPersonAddData(sendResponse) {
+  async function allPersonAddData(sendResponse) {
     // 전형번호는 빈 배열, 응시자 번호를 보낸다.
     const checkedData = {
       screeningResumeSns: [],
@@ -65,8 +65,6 @@
       body: JSON.stringify(checkedData),
     });
 
-    // accGridReload();
-
     commonScript.modal(
       "응시자 데이터 추가 작업이 시작되었습니다",
       '<strong>응시현황 상태가 "완료", "미용시", "미완료", "접속횟수 초과" 상태인 지원자만 적용됩니다.</strong> 응시자 데이터 추가 시 미응시->완료->분석가능 인원으로 전환되고 그리드에 정상적으로 나타나기까지 오랜 시간이 소요됩니다. 현재 페이지를 벗어나거나 브라우저를 종료해도 작업은 멈추지 않습니다.',
@@ -74,11 +72,38 @@
       true
     );
 
-    if (sendResponse) sendResponse({ success: true });
     console.log(`%c [Jobflex Extension] 전체 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, "color: green");
+
+    // 에러 뱉을 때를 고려했으나, 정상일 때 pending 상태가 길어서 로딩 + dim처리해서 기다리게 하면 데이터를 확인할 때 좋지 않을듯..
+    // 페이지 우측 하단에 로딩 게이지라던지 고려해봤는데 만약 페이지를 이동하면 없어지니까 이것도 좋은 방법이 아닌듯. 물론 강제로 계속 넣어줄 수 있긴하지만 일단은 중요도 낮으니 스킵
+    // try {
+    //   const response = await fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(checkedData),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error(response.status);
+    //   } else {
+    //     commonScript.modal(
+    //       "응시자 데이터 추가 작업이 시작되었습니다",
+    //       '<strong>응시현황 상태가 "완료", "미용시", "미완료", "접속횟수 초과" 상태인 지원자만 적용됩니다.</strong> 응시자 데이터 추가 시 미응시->완료->분석가능 인원으로 전환되고 그리드에 정상적으로 나타나기까지 오랜 시간이 소요됩니다. 현재 페이지를 벗어나거나 브라우저를 종료해도 작업은 멈추지 않습니다.',
+    //       true,
+    //       true
+    //     );
+    //     console.log(`%c [Jobflex Extension] 전체 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, "color: green");
+    //   }
+    // } catch (e) {
+    //   commonScript.modal("응시자 데이터 생성 실패", "", true);
+    // }
+
+    if (sendResponse) sendResponse({ success: true });
   }
 
-  function selectedPersonAddData(sendResponse) {
+  async function selectedPersonAddData(sendResponse) {
     // 체크된 전형번호, 응시자 번호를 읽는다.
     // 이 때 만약 완료, 미응시, 미완료, 접속횟수 초과가 포함되어 있다면 Alert를 띄운다.
     const checkedData = {
@@ -88,7 +113,8 @@
 
     const checkedInput = [...document.querySelectorAll('input.checkbox[name="resumeSn"]:checked')];
     if (checkedInput.length === 0) {
-      commonScript.modal("체크한 지원자가 없습니다");
+      commonScript.modal("체크한 지원자가 없습니다", "", true);
+      if (sendResponse) sendResponse({ success: true });
       return false;
     }
 
@@ -99,16 +125,14 @@
       const accStatusButton = document.querySelector(`button[data-screeningresumesn="${checkedScreeningResumeSn}"]`);
       const accStatusText = accStatusButton.previousSibling.textContent;
 
-      const accStatus = ["완료", "미응시", "미완료", "접속횟수 초과"];
+      // const accStatus = ["완료", "미응시", "미완료", "접속횟수 초과"];
 
-      if (!accStatus.includes(accStatusText)) {
-        commonScript.modal(
-          "",
-          '응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다. 해당 지원자를 제외한 나머지 지원자에 대해 적용됩니다.'
-        );
-        alert();
-      }
-
+      // if (!accStatus.includes(accStatusText)) {
+      //   commonScript.modal(
+      //     "",
+      //     '응시 데이터를 추가하려는 지원자 중에 "완료", "미용시", "미완료", "접속횟수 초과" 상태가 아닌 지원자가 있습니다. 해당 지원자를 제외한 나머지 지원자에 대해 적용됩니다.'
+      //   );
+      // }
       checkedData.screeningResumeSns.push(Number(checkedScreeningResumeSn));
     });
 
@@ -120,8 +144,40 @@
       body: JSON.stringify(checkedData),
     });
 
-    // accGridReload();
-    if (sendResponse) sendResponse({ success: true });
+    commonScript.modal(
+      "응시자 데이터 추가 작업이 시작되었습니다",
+      '<strong>응시현황 상태가 "완료", "미용시", "미완료", "접속횟수 초과" 상태인 지원자만 적용됩니다.</strong> 응시자 데이터 추가 시 미응시->완료->분석가능 인원으로 전환되고 그리드에 정상적으로 나타나기까지 오랜 시간이 소요됩니다. 현재 페이지를 벗어나거나 브라우저를 종료해도 작업은 멈추지 않습니다.',
+      true,
+      true
+    );
+
     console.log(`%c [Jobflex Extension] 선택 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, "color: green;");
+
+    // 위 전체 응시자 데이터 추가 주석과 같은 이유.
+    // try {
+    //   const response = await fetch(`${origin}/chrome-extension/create/acc-examination-data`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(checkedData),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error(response.status);
+    //   } else {
+    //     commonScript.modal(
+    //       "응시자 데이터 추가 작업이 시작되었습니다",
+    //       '<strong>응시현황 상태가 "완료", "미용시", "미완료", "접속횟수 초과" 상태인 지원자만 적용됩니다.</strong> 응시자 데이터 추가 시 미응시->완료->분석가능 인원으로 전환되고 그리드에 정상적으로 나타나기까지 오랜 시간이 소요됩니다. 현재 페이지를 벗어나거나 브라우저를 종료해도 작업은 멈추지 않습니다.',
+    //       true,
+    //       true
+    //     );
+    //     console.log(`%c [Jobflex Extension] 선택 응시자 데이터 추가 성공! ${JSON.stringify(checkedData)}`, "color: green;");
+    //   }
+    // } catch (e) {
+    //   commonScript.modal("응시자 데이터 생성 실패", "", true);
+    // }
+
+    if (sendResponse) sendResponse({ success: true });
   }
 })();

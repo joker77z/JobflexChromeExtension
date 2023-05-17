@@ -24,34 +24,32 @@
 .modal-wrapper .description {
   color: white;
   padding: 10px;
-  margin-bottom: 100px;
   line-height: 1.5;
 }
 
+.modal-wrapper .button-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
 .modal-wrapper .confirm-button {
-  margin-top: 10px;
   background: lightgray;
   border: none;
-  position: absolute;
-  bottom: 64px;
   padding: 8px;
   width: 85%;
-  left: 50%;
-  transform: translateX(-50%);
   border-radius: 10px;
   color: black;
 }
 
 .modal-wrapper .always-confirm-button {
-  margin-top: 10px;
   background: lightgray;
   border: none;
-  position: absolute;
-  bottom: 20px;
   padding: 8px;
   width: 85%;
-  left: 50%;
-  transform: translateX(-50%);
   border-radius: 10px;
   color: black;
 }
