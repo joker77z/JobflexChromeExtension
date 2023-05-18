@@ -11,7 +11,6 @@
   }
 
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-    console.log("message를 들을 수 있나설마?");
     if (msg.from === "popup") {
       switch (msg.action) {
         case "alwaysDontViewLoginHistory":
