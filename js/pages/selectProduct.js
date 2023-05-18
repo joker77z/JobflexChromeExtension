@@ -1,26 +1,27 @@
 (async () => {
-  const src = chrome.runtime.getURL('js/helper/common.js');
+  const src = chrome.runtime.getURL("js/helper/common.js");
   const commonScript = await import(src);
 
-  commonScript.matchUrlToRun('/cus/selectProduct')
-    ? console.log('%c [Jobflex Extension] 제품선택 페이지 정상 진입', 'color: white; background: #00C17C; padding: 10px;')
-    : '';
+  commonScript.matchUrlToRun("/cus/selectProduct")
+    ? console.log("%c [Jobflex Extension] 제품선택 페이지 정상 진입", "color: white; background: #00C17C; padding: 10px;")
+    : "";
 
-  if (!commonScript.matchUrlToRun('/cus/selectProduct')) {
+  if (!commonScript.matchUrlToRun("/cus/selectProduct")) {
     return false;
   }
 
   chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-    if (msg.from === 'popup') {
+    console.log("message를 들을 수 있나설마?");
+    if (msg.from === "popup") {
       switch (msg.action) {
-        case 'alwaysDontViewLoginHistory':
+        case "alwaysDontViewLoginHistory":
           dontViewLoginHistory(sendResponse);
           break;
-        case 'alwaysDontViewPopup':
+        case "alwaysDontViewPopup":
           dontViewPopup(sendResponse);
           break;
-        case 'alwaysExtendPassword':
-        case 'extendPassword':
+        case "alwaysExtendPassword":
+        case "extendPassword":
           extendPassword(sendResponse);
           break;
       }
@@ -37,26 +38,26 @@
     chrome.storage.local.get([key]).then((result) => {
       if (result[key]) {
         fn();
-      } else if (key === 'alwaysDontViewLoginHistory' && !result[key]) {
-        document.cookie = 'WELCOME_PAGE=false';
+      } else if (key === "alwaysDontViewLoginHistory" && !result[key]) {
+        document.cookie = "WELCOME_PAGE=false";
       }
     });
   });
 
   function dontViewLoginHistory(sendResponse) {
     if (sendResponse) {
-      const modalTitle = document.querySelector('.h1.face-lift-h1') || document.querySelector('.h1 ');
-      if (modalTitle.textContent === '로그인 내역') {
-        modalTitle.closest('#modalFrm').remove();
+      const modalTitle = document.querySelector(".h1.face-lift-h1") || document.querySelector(".h1 ");
+      if (modalTitle?.textContent === "로그인 내역") {
+        modalTitle.closest("#modalFrm").remove();
+        sendResponse({ success: true });
       }
-      sendResponse({ success: true });
     }
-    document.cookie = 'WELCOME_PAGE=done';
+    document.cookie = "WELCOME_PAGE=done";
   }
 
   function dontViewPopup(sendResponse) {
     let timer = setInterval(() => {
-      if (document.querySelector('[data-popup]')) {
+      if (document.querySelector("[data-popup]")) {
         removeDOM();
         if (sendResponse) sendResponse({ success: true });
         clearInterval(timer);
@@ -64,7 +65,7 @@
     }, 500);
 
     function removeDOM() {
-      [...document.querySelectorAll('[data-popup]')].forEach((element) => {
+      [...document.querySelectorAll("[data-popup]")].forEach((element) => {
         element.remove();
       });
     }
@@ -75,13 +76,13 @@
 
     // 비밀번호 만료가 되었는지 먼저 체크. 만료 되었으면 연장api를 실행.
     const expiredPasswordResponse = await fetch(`${origin}/cus/member/isExpiredPassword`, {
-      method: 'POST',
+      method: "POST",
     });
     const isExpiredPassword = await expiredPasswordResponse.json();
     if (!isExpiredPassword) return;
 
     await fetch(`${origin}/chrome-extension/extend-password-expiration-date`, {
-      method: 'POST',
+      method: "POST",
     });
 
     // 페이지 진입 전 Always ON이면 local storage데이터를 읽어서 사전에 API를 쏘기 때문에 모달이 안뜬다. 즉, sendResponse가 필요없다.
