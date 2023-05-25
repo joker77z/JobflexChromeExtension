@@ -2,16 +2,16 @@ import { $ } from '/js/helper/util.mjs';
 
 window.addEventListener('DOMContentLoaded', () => {
   // Selector
-  const $alwaysDontViewLoginHistoryToggle = $(
-    'alwaysDontViewLoginHistoryToggle',
-  );
+  const $allPersonAddDataButton = $('allPersonAddDataButton');
+  const $selectedPersonAddDataButton = $('selectedPersonAddDataButton');
+  const $allPersonRemoveDataButton = $('allPersonRemoveDataButton');
+  const $selectedPersonRemoveDataButton = $('selectedPersonRemoveDataButton');
+
+  const $alwaysDontViewLoginHistoryToggle = $('alwaysDontViewLoginHistoryToggle');
   const $alwaysDontViewPopupToggle = $('alwaysDontViewPopupToggle');
 
   const $alwaysExtendPasswordToggle = $('alwaysExtendPasswordToggle');
   const $extendPasswordButton = $('extendPasswordButton');
-
-  const $allPersonAddDataButton = $('allPersonAddDataButton');
-  const $selectedPersonAddDataButton = $('selectedPersonAddDataButton');
 
   const storageKeysToElementMap = {
     alwaysDontViewLoginHistory: $alwaysDontViewLoginHistoryToggle,
@@ -20,9 +20,9 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   document.getElementById('header').addEventListener('click', () => {
-    window.open('https://midasitweb-jira.atlassian.net/wiki/spaces/AATS/pages/3702718544/Jobflex+Chrome+Extension')
-  })
-  
+    window.open('https://midasitweb-jira.atlassian.net/wiki/spaces/AATS/pages/3702718544/Jobflex+Chrome+Extension');
+  });
+
   /**
    * ToggleRender
    * Toggle을 추가하면 chrome.storage.local.key: dom 형식으로 넣어주면 됌.
@@ -45,10 +45,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  $extendPasswordButton.addEventListener('click', () => {
-    sendMessageToContentScript('extendPassword');
-  });
-
   $allPersonAddDataButton.addEventListener('click', () => {
     sendMessageToContentScript('allPersonAddData');
   });
@@ -57,7 +53,17 @@ window.addEventListener('DOMContentLoaded', () => {
     sendMessageToContentScript('selectedPersonAddData');
   });
 
-  
+  $allPersonRemoveDataButton.addEventListener('click', () => {
+    sendMessageToContentScript('allPersonRemoveData');
+  });
+
+  $selectedPersonRemoveDataButton.addEventListener('click', () => {
+    sendMessageToContentScript('selectedPersonRemoveData');
+  });
+
+  $extendPasswordButton.addEventListener('click', () => {
+    sendMessageToContentScript('extendPassword');
+  });
 
   async function sendMessageToContentScript(key) {
     const [tabs] = await chrome.tabs.query({

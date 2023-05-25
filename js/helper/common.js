@@ -82,8 +82,8 @@ function matchUrlToRun(path) {
   }
 }
 
-function modal(title, description, useConfirmButton, useAlwaysConfirmButton) {
-  if (localStorage.getItem('dontViewAddAccDataModal') !== 'true') {
+function modal(title, description, useAlwaysConfirmButton, storageKey) {
+  if (localStorage.getItem(storageKey) !== 'true') {
     // DIM
     const dim = document.createElement('div');
     dim.classList = 'modal-bg';
@@ -116,7 +116,7 @@ function modal(title, description, useConfirmButton, useAlwaysConfirmButton) {
 
     document.querySelector('#alwaysConfirmButton')?.addEventListener('click', () => {
       dim.remove();
-      localStorage.setItem('dontViewAddAccDataModal', true);
+      localStorage.setItem(storageKey, true);
     });
   }
 }

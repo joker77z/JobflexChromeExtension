@@ -11,6 +11,7 @@ body {
   font-family: 'Pretendard-Regular';
   width: 500px;
   text-align: center;
+  padding: 12px 12px 6px 12px;
 }
 
 button {
@@ -22,14 +23,25 @@ h1 {
   font-size: 16px;
 }
 
-.toggle-container {
+.blue-text {
+  color: blue;
+}
+
+.red-text {
+  color: red;
+}
+
+/* ------------------------------------ */
+
+.container {
   display: flex;
   flex-flow: row;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .toggle-container .section {
   width: 33%;
-  margin: 10px;
 }
 
 .section {
@@ -37,18 +49,24 @@ h1 {
   padding: 10px 10px;
   box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
   background: white;
+  width: 100%;
 }
 
-.section.acc {
-  margin: 10px;
+.section.acc.add {
+  background: #d6f3ff;
+}
+
+.section.acc.remove {
+  background: #ffe3e1;
 }
 
 .section.acc button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
-  height: 24px;
 
-  padding: 4px 4px;
-  margin-left: 10px;
+  padding: 6px 4px;
 
   font-size: 14px;
   border: none;
@@ -56,6 +74,16 @@ h1 {
   background: lightsteelblue;
   box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
   cursor: pointer;
+}
+
+.section.acc.add button {
+  font-weight: bold;
+  background: #8dbeff;
+}
+
+.section.acc.remove button {
+  font-weight: bold;
+  background: #ff7e7e;
 }
 
 .section::before {
@@ -72,9 +100,6 @@ h1 {
 
 .section-title {
   color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 15px;
   margin-top: 0px;
   margin-bottom: 0;
@@ -116,6 +141,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  gap: 10px;
 }
 
 .control-section .toggle-text {
