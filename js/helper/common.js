@@ -66,6 +66,7 @@ function matchUrlToRun(path) {
     "https://st-lsh0503-cms-recruiter-co-kr.midasweb.net",
     "https://st2-jobflex01-acca-cms-recruiter-co-kr.midasweb.net",
     "https://qa-jf3m-cms-recruiter-co-kr.midasweb.net/",
+    "https://qa-jf3ntom-cms-recruiter-co-kr.midasweb.net/"
   ];
 
   const includePathDomain = domainList.map((domain) => domain + path);
